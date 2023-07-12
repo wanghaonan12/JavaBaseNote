@@ -15,7 +15,7 @@ import java.util.Collection;
 public class Code_01_ReflectBringIn {
     public static void main(String[] args) throws Exception {
         // 通过字符串创建 Person 对象
-        Class<?> personClass = Class.forName("Person");
+        Class<?> personClass = Class.forName("com.whn.Reflect.dto.Person");
         Person person = (Person) personClass.getDeclaredConstructor(String.class, int.class)
                 .newInstance("Alice", 25);
 

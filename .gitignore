@@ -19,9 +19,9 @@
 #*.zip           忽略所有.zip文件
 #/mtk/do.c       忽略某个具体文件
 
-*.idea
-*target/
-*/test/
+*/.idea
+*/target
+*/test
 # Miscellaneous
 *.class
 *.log
