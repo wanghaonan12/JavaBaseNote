@@ -22,15 +22,22 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId> <!-- 引用spring-cloud依赖， 可在spring。io的官网上查找最新的版本号，其中GA标识表示为稳定的发布版，建议使用 -->
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>2.7.14</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.1.0</version>
+            <version>2.2.4.RELEASE</version>
         </dependency>
 <!--        test 单元测试-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13</version>
+            <version>4.13.1</version>
         </dependency>
 <!--   class  xml 转换-->
         <dependency>
