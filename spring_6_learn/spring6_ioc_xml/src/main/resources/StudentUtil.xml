@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    通过set方法设置参数-->
+    <bean id="studentOne" class="com.whn.spring6.bean.Student">
+        <!-- property标签：通过组件类的setXxx()方法给组件对象设置属性 -->
+        <!-- name属性：指定属性名（这个属性名是getXxx()、setXxx()方法定义的，和成员变量无关） -->
+        <!-- value属性：指定属性值 -->
+        <property name="id" value="1001"></property>
+        <property name="name" value="张三"></property>
+        <property name="age" value="23"></property>
+        <property name="sex" value="男"></property>
+    </bean>
+    <!--    添加对象类型-->
+    <bean name="clazzOne" class="com.whn.spring6.bean.Clazz">
+        <property name="clazzId" value="1001"></property>
+        <property name="clazzName" value="高三一班"></property>
+        <property name="students" ref="students"></property>
+    </bean>
+
+
+    <!--    通过构造器设置参数-->
+    <bean id="studentTwo" class="com.whn.spring6.bean.Student">
+        <!--        index属性：指定参数所在位置的索引（从0开始）-->
+        <!--        name属性：指定参数名-->
+        <constructor-arg value="1002"></constructor-arg>
+        <constructor-arg index="1" value="李四"></constructor-arg>
+        <constructor-arg name="age" value="33"></constructor-arg>
+        <constructor-arg value="女"></constructor-arg>
+        <constructor-arg name="clazz">
+            <ref bean="clazzOne"/>
+        </constructor-arg>
+        <constructor-arg name="hobbies">
+            <array>
+                <value>抽烟</value>
+                <value>喝酒</value>
+                <value>烫头</value>
+            </array>
+        </constructor-arg>
+        <constructor-arg name="teacherMap">
+            <map></map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="studentThree" class="com.whn.spring6.bean.Student">
+        <property name="id" value="1001"></property>
+        <property name="name" value="null"></property>
+        <property name="age">
+            <null/>
+        </property>
+        <property name="sex" value="男"></property>
+    </bean>
+
+    <bean id="studentFour" class="com.whn.spring6.bean.Student">
+        <property name="id" value="1001"></property>
+        <!--      CDATA语法会将标签中的所有看作字符输出不会进行翻译  -->
+        <property name="name">
+            <value>
+                <![CDATA[a < b]]>
+            </value>
+        </property>
+        <property name="age">
+            <null/>
+        </property>
+        <property name="sex" value="男"></property>
+    </bean>
+
+
+    <bean name="teacherOne" class="com.whn.spring6.bean.Teacher">
+        <property name="teacherId" value="001"></property>
+        <property name="teacherName" value="张三"></property>
+    </bean>
+    <bean name="teacherTwo" class="com.whn.spring6.bean.Teacher">
+        <property name="teacherId" value="002"></property>
+        <property name="teacherName" value="李四"></property>
+    </bean>
+
+    <!--list集合类型的bean-->
+    <util:list id="students">
+        <ref bean="studentOne"></ref>
+        <ref bean="studentTwo"></ref>
+        <ref bean="studentThree"></ref>
+    </util:list>
+    <!--map集合类型的bean-->
+    <util:map id="teacherMap">
+        <entry>
+            <key>
+                <value>10010</value>
+            </key>
+            <ref bean="teacherOne"></ref>
+        </entry>
+        <entry>
+            <key>
+                <value>10086</value>
+            </key>
+            <ref bean="teacherTwo"></ref>
+        </entry>
+    </util:map>
+
+    <!--    引用类型创建 list 和 map -->
+
+    <bean id="studentTen" class="com.whn.spring6.bean.Student">
+        <property name="id" value="1004"></property>
+        <property name="name" value="赵六"></property>
+        <property name="age" value="26"></property>
+        <property name="sex" value="女"></property>
+        <!-- ref属性：引用IOC容器中某个bean的id，将所对应的bean为属性赋值 -->
+        <property name="clazz" ref="clazzOne"></property>
+        <property name="hobbies">
+            <array>
+                <value>抽烟</value>
+                <value>喝酒</value>
+                <value>烫头</value>
+            </array>
+        </property>
+
+        <property name="teacherMap" ref="teacherMap">
+        </property>
+    </bean>
+
+</beans>

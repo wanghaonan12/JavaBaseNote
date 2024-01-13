@@ -1,0 +1,22 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: helloword_2
+  mvc:
+    static-path-pattern: /res/** # 默认无前缀
+  resources:
+    static-locations: [classpath:/myStatic/] #设置calsspath 静态资源的路径
+  boot:
+    admin:
+      client:
+        url: http://localhost:8002 #可视化服务端口
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    enabled-by-default: true #暴露所有端点信息
+    web:
+      exposure:
+        include: '*'  #以web方式暴露
