@@ -22,7 +22,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 //@XmlAccessorType(XmlAccessType.FIELD)
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class People {
     /**
      * 名字
